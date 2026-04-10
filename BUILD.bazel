@@ -1,0 +1,89 @@
+"""sonic-platform-daemons — individual daemon wheels.
+
+Each daemon is built as a separate wheel matching the Make system output.
+Make rules: sonic-chassisd.mk, sonic-ledd.mk, sonic-pcied.mk, sonic-psud.mk,
+sonic-sensormond.mk, sonic-stormond.mk, sonic-syseepromd.mk, sonic-thermalctld.mk,
+sonic-xcvrd.mk, sonic-ycabled.mk
+"""
+
+load("//rules/bazel/wheel:wheel.bzl", "sonic_wheel")
+
+package(default_visibility = ["//visibility:public"])
+
+# Individual daemon wheels — each matches a rules/*.mk file
+
+sonic_wheel(
+    name = "sonic_chassisd_wheel",
+    distribution = "sonic-chassisd",
+    version = "1.0",
+    summary = "SONiC chassis daemon.",
+)
+
+sonic_wheel(
+    name = "sonic_ledd_wheel",
+    distribution = "sonic-ledd",
+    version = "1.0",
+    summary = "SONiC LED daemon.",
+)
+
+sonic_wheel(
+    name = "sonic_pcied_wheel",
+    distribution = "sonic-pcied",
+    version = "1.0",
+    summary = "SONiC PCIe daemon.",
+)
+
+sonic_wheel(
+    name = "sonic_psud_wheel",
+    distribution = "sonic-psud",
+    version = "1.0",
+    summary = "SONiC PSU daemon.",
+)
+
+sonic_wheel(
+    name = "sonic_sensormond_wheel",
+    distribution = "sonic-sensormond",
+    version = "1.0",
+    summary = "SONiC sensor monitor daemon.",
+)
+
+sonic_wheel(
+    name = "sonic_stormond_wheel",
+    distribution = "sonic-stormond",
+    version = "1.0",
+    summary = "SONiC storage monitor daemon.",
+)
+
+sonic_wheel(
+    name = "sonic_syseepromd_wheel",
+    distribution = "sonic-syseepromd",
+    version = "1.0",
+    summary = "SONiC system EEPROM daemon.",
+)
+
+sonic_wheel(
+    name = "sonic_thermalctld_wheel",
+    distribution = "sonic-thermalctld",
+    version = "1.0",
+    summary = "SONiC thermal control daemon.",
+)
+
+sonic_wheel(
+    name = "sonic_xcvrd_wheel",
+    distribution = "sonic-xcvrd",
+    version = "1.0",
+    summary = "SONiC transceiver daemon.",
+)
+
+sonic_wheel(
+    name = "sonic_ycabled_wheel",
+    distribution = "sonic-ycabled",
+    version = "1.0",
+    summary = "SONiC Y-cable daemon.",
+)
+
+# Umbrella alias for backward compat
+alias(
+    name = "sonic_platform_daemons_wheel",
+    actual = ":sonic_xcvrd_wheel",
+)
